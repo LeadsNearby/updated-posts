@@ -21,14 +21,9 @@ $lastupdated_args = array(
  
 //Loop to display 20 recently updated posts
 $lnb_last_updated_loop = new WP_Query( $lastupdated_args );
-$counter = 1; ?>
-<style>
-.card {background: #fff;border-radius: 2px;display: block;height: auto;margin: 1rem;padding:1.5%;position: relative;width: 97%;}
-.card-1 {box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);transition: all 0.3s cubic-bezier(.25,.8,.25,1);}
-.card-1:hover {box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
-.card h3 {margin-top:0;}
-</style>
-<? while( $lnb_last_updated_loop->have_posts() && $counter < 20 ) : $lnb_last_updated_loop->the_post();
+$counter = 1;
+$string .= '<style>.card {background: #fff;border-radius: 2px;display: block;height: auto;margin: 1rem;padding:1.5%;position: relative;width: 97%;}.card-1 {box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);transition: all 0.3s cubic-bezier(.25,.8,.25,1);}.card-1:hover {box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}.card h3 {margin-top:0;}</style>';
+while( $lnb_last_updated_loop->have_posts() && $counter < 20 ) : $lnb_last_updated_loop->the_post();
 
 $logo_url = Avada_Sanitize::get_url_with_correct_scheme( Avada()->settings->get( 'logo', 'url' ) );
 $content = get_the_content( $lnb_last_updated_loop->post->ID );
@@ -55,6 +50,3 @@ add_shortcode('last-updated-posts', 'lnb_last_updated_posts');
 
 require_once( UpdatedPosts_MAIN . 'lib/updater/github-updater.php' );
 new GitHubPluginUpdater( __FILE__, 'LeadsNearby', 'updated-posts' );
-
-
-?>
