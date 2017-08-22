@@ -3,7 +3,7 @@
 Plugin Name: LeadsNearby Recently Updated Posts
 Plugin URI: http://leadsnearby.com
 Description: Displays recently updated blog posts using a shortcode.
-Version: 1.0.0
+Version: 1.0.1
 Author: LeadsNearby
 Author URI: http://leadsnearby.com
 License: GPLv2
